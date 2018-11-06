@@ -69,7 +69,7 @@ class Comment extends Model
     }
 
 
-    
+
 
 
 
