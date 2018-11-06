@@ -52,7 +52,7 @@ class News extends Model
 
 
 
-    
+
 
 
 
