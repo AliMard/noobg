@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33c2a35a-d620-4c8f-bce1-c44085feed3a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/models/category.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/comment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -75,14 +75,14 @@
           <entry key="css" value="2" />
           <entry key="htaccess" value="2" />
           <entry key="html" value="4" />
-          <entry key="php" value="29" />
+          <entry key="php" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="2" />
           <entry key="HTML" value="4" />
-          <entry key="PHP" value="29" />
+          <entry key="PHP" value="30" />
           <entry key="htaccess" value="2" />
         </counts>
       </usages-collector>
@@ -91,15 +91,15 @@
           <entry key="css" value="32" />
           <entry key="htaccess" value="9" />
           <entry key="html" value="4" />
-          <entry key="php" value="2470" />
+          <entry key="php" value="3706" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="32" />
           <entry key="HTML" value="4" />
-          <entry key="PHP" value="2467" />
-          <entry key="SQL" value="3" />
+          <entry key="PHP" value="3696" />
+          <entry key="SQL" value="10" />
           <entry key="htaccess" value="9" />
         </counts>
       </usages-collector>
@@ -110,7 +110,7 @@
       <usages-collector id="statistics.php.composer.actions" />
       <usages-collector id="statistics.php.new.class">
         <counts>
-          <entry key="PHP Class.type" value="5" />
+          <entry key="PHP Class.type" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.composer.command.options" />
@@ -118,11 +118,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/category.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="607">
+            <state relative-caret-position="407">
               <caret line="82" column="21" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/comment.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="382">
+              <caret line="71" column="4" lean-forward="true" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -162,7 +171,6 @@
         <option value="$PROJECT_DIR$/app/models/tag.php" />
         <option value="$PROJECT_DIR$/app/models/video.php" />
         <option value="$PROJECT_DIR$/app/models/news.php" />
-        <option value="$PROJECT_DIR$/app/models/comment.php" />
         <option value="$PROJECT_DIR$/app/models/newsImg.php" />
         <option value="$PROJECT_DIR$/app/models/newsVideo.php" />
         <option value="$PROJECT_DIR$/app/models/postTag.php" />
@@ -194,6 +202,7 @@
         <option value="$PROJECT_DIR$/app/controllers/testController.php" />
         <option value="$PROJECT_DIR$/app/models/admin.php" />
         <option value="$PROJECT_DIR$/app/models/category.php" />
+        <option value="$PROJECT_DIR$/app/models/comment.php" />
       </list>
     </option>
   </component>
@@ -384,12 +393,12 @@
       <workItem from="1541349012279" duration="7407000" />
       <workItem from="1541426741886" duration="1400000" />
       <workItem from="1541491869645" duration="805000" />
-      <workItem from="1541492676517" duration="4441000" />
+      <workItem from="1541492676517" duration="9551000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146374000" />
+    <option name="totallyTimeSpent" value="151484000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -509,7 +518,6 @@
     <entry file="file://$PROJECT_DIR$/app/models/postView.php" />
     <entry file="file://$PROJECT_DIR$/app/models/tag.php" />
     <entry file="file://$PROJECT_DIR$/app/models/video.php" />
-    <entry file="file://$PROJECT_DIR$/app/models/comment.php" />
     <entry file="file://$PROJECT_DIR$/app/models/post.php" />
     <entry file="file://$PROJECT_DIR$/app/core/model.php" />
     <entry file="file://$PROJECT_DIR$/app/helper/jdatetime.class.php" />
@@ -578,8 +586,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/category.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
+        <state relative-caret-position="407">
           <caret line="82" column="21" selection-start-line="82" selection-start-column="21" selection-end-line="82" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/comment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="71" column="4" lean-forward="true" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="4" />
         </state>
       </provider>
     </entry>
