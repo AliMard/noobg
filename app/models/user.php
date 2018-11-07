@@ -100,6 +100,69 @@ class User extends Model
 
 
 
+    public function userExist($username)
+    {
+        $sqlQuery = "select * from `t_users` where `username`=? and `status`!=0 ";
+        $res = $this->getDb()->prepare($sqlQuery);
+        $res->bindValue(1,$username);
+
+
+        if ($res->execute()){
+            if ($res->rowCount()>0)
+                return true;;
+        }
+
+        return false;
+    }
+
+
+    //*************************************** user details *********************
+
+
+
+    public function insertUserDetails($data)
+    {
+
+        $sqlQuery="insert into `t_user_details` set `user_id`=? ,`fname`=? , `lname`=? , `state`=? , `city`=?
+, `address`=? , `phone`=? , `postal_code`=?";
+
+        $res = $this->getDb()->prepare($sqlQuery);
+        $res->bindValue(1,$data['userId']);
+        $res->bindValue(2,$data['fName']);
+        $res->bindValue(3,$data['lName']);
+        $res->bindValue(4,$data['state']);
+        $res->bindValue(5,$data['city']);
+        $res->bindValue(6,$data['address']);
+        $res->bindValue(7,$data['phone']);
+        $res->bindValue(8,$data['postalCode']);
+
+
+        if ($res->execute()){
+            if ($res->rowCount()>0)
+                return true;
+        }
+
+return false;
+
+    }
+
+
+    public function userDetailsExist($username)
+    {
+        $sqlQuery="select * from `t_user_details` where 
+`user_id`=(select `id` from `t_users` where `username`=? and `status`!=0)";
+
+        $res = $this->getDb()->prepare($sqlQuery);
+        $res->bindValue(1,$username);
+
+
+        if ($res->execute()){
+            if ($res->rowCount()>0)
+                return true;
+        }
+
+        return false;
+    }
 
 
 
