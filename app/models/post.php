@@ -81,9 +81,82 @@ class Post extends Model
 
     public function getVideo()
     {
-        $sqlQuery ="";
+        $sqlQuery ="SELECT t_posts.title ,t_posts.update_by, t_posts.thumbnails_url , t_posts.insert_date ,t_admins.username as insert_by 
+ ,t_posts.category_id  , t_category.name , t_posts.insert_time , t_video.time , t_video.video_url FROM t_posts INNER JOIN t_video 
+ ON t_video.post_id=t_posts.id INNER JOIN t_admins ON t_admins.id=t_posts.insert_by  INNER JOIN t_category ON 
+ t_category.id=t_posts.category_id WHERE t_posts.status!=0 AND t_posts.status=(SELECT `code` FROM `t_constant` 
+ WHERE `table_name`='t_posts' AND `column_name`='status' AND `value`='video') ";
+
+        $res = $this->getDb()->prepare($sqlQuery);
+
+
+        if ($res->execute()){
+            if ($res->rowCount()>0)
+                return $res;
+        }
+    return false;
 
     }
+
+
+
+
+
+
+
+    public function getNews()
+    {
+        $sqlQuery="SELECT t_posts.title , t_posts.thumbnails_url , t_posts.insert_date ,t_admins.username insert_by 
+ ,t_posts.category_id  , t_category.name , t_posts.insert_time , t_news.text FROM t_posts INNER JOIN t_news 
+ ON t_news.post_id=t_posts.id INNER JOIN t_admins ON t_admins.id=t_posts.insert_by INNER JOIN t_category ON 
+ t_category.id=t_posts.category_id WHERE t_posts.status!=0 AND t_posts.status=(SELECT `code` FROM `t_constant` 
+ WHERE `table_name`='t_posts' AND `column_name`='status' AND `value`='news')";
+
+
+        $res = $this->getDb()->prepare($sqlQuery);
+
+
+        if ($res->execute()){
+            if ($res->rowCount()>0)
+                return $res;
+        }
+
+
+
+        return false;
+
+    }
+
+
+
+
+
+
+
+    public function postExist($postId)
+    {
+
+        $sqlQuery="select * from  `t_posts` where `id`=? and `status`!=0";
+
+        $res = $this->getDb()->prepare($sqlQuery);
+        $res->bindValue(1,$postId);
+
+
+        if ($res->execute())
+        {
+            if ($res->rowCount()>0)
+
+                return true;
+        }
+
+            return false;
+
+    }
+
+
+
+
+
 
 
 }
