@@ -35,10 +35,24 @@ class Video extends Model
     public function update($data)
     {
         $sqlQuery = "update `t_video` set `video_url`=? ,`caption`=?,
-`post_id`=(select `id` from )";
+`post_id`=(select `id` from `t_posts` where `id`=? and `status`!=0)";
         $res = $this->getDb()->prepare($sqlQuery);
-        $res->bindValue(1,$data['']);
+        $res->bindValue(1,$data['videoUrl']);
+        $res->bindValue(2,$data['caption']);
+        $res->bindValue(2,$data['postId']);
+
+
+        if ($res->execute()){
+            if ($res->rowCount()>0)
+                return true;
+        }
+
+        return false;
     }
+    
+
+
+
 
 
 }
