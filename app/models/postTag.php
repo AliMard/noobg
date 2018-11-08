@@ -33,7 +33,20 @@ class PostTag extends Model
 
     public function getPostTags($postId)
     {
-        $sqlQuery="";
+        $sqlQuery="select t_tag.name from `t_tag` inner join `t_post_tag` on t_post_tag.tag_id = t_tag.id where
+ t_post_tag.post_id(select `id` from `t_posts` where `id`=? and `status`!=0)";
+
+        $res = $this->getDb()->prepare($sqlQuery);
+        $res->bindValue(1,$postId);
+
+
+        if ($res->execute()){
+            if ($res->rowCount()>0)
+                return $res;
+        }
+
+
+        return false;
     }
 
 
@@ -78,6 +91,30 @@ class PostTag extends Model
         return false;
 
     }
+
+
+
+    public function getPostByTag($tagId,$type)
+    {
+        $sqlQuery = "select t_post_tag.post_id from `t_pots_tag` inner  join `t_tag` on t_tag.id=t_post_tag.tag_id inner 
+join t_posts on t_posts.id=t_post_tag.post_id where  t_post_tag.status!=0 and t_post_tag.tag_id=?
+and t_posts.status=?";
+
+        $res = $this->getDb()->prepare($sqlQuery);
+        $res->bindValue(1,$tagId);
+        $res->bindValue(2,$type);
+
+        if ($res->execute()){
+            if ($res->rowCount()>0)
+                return $res;
+        }
+
+        return false;
+    }
+
+
+
+
 
 
 

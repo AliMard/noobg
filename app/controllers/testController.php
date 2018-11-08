@@ -14,16 +14,22 @@ class TestController extends Controller
     public function index()
     {
 
-       $testModel = $this->model("admin");
+        $ar = [1,];
 
-     if (  $testModel->insert([
-           'username'=>'3123',
-           'name'=>'ali mard' ,
-           'password'=>'312344',
-           'pkey'=>'158',
-           'email'=>'ali@test.com344'
-       ]))
-         echo "true";
+        $str = implode(",",$ar);
+        echo $str;
+
+        //
+//       $testModel = $this->model("admin");
+//
+//     if (  $testModel->insert([
+//           'username'=>'3123',
+//           'name'=>'ali mard' ,
+//           'password'=>'312344',
+//           'pkey'=>'158',
+//           'email'=>'ali@test.com344'
+//       ]))
+//         echo "true";
 
     }
 

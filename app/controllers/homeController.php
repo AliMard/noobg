@@ -10,6 +10,15 @@ class HomeController extends Controller
 {
 
 
+
+
+    public function __construct()
+    {
+
+
+    }
+
+
     public function index()
     {
 
@@ -17,7 +26,10 @@ class HomeController extends Controller
 
 
 
-    
+
+
+
+
 
 
 
