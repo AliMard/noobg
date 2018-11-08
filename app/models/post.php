@@ -79,13 +79,14 @@ class Post extends Model
 
 
 
-    public function getVideo()
+    public function getVideo($start ,$end , $sortTarget='', $sortStyle = '')
     {
         $sqlQuery ="SELECT t_posts.title ,t_posts.update_by, t_posts.thumbnails_url , t_posts.insert_date ,t_admins.username as insert_by 
  ,t_posts.category_id  , t_category.name , t_posts.insert_time , t_video.time , t_video.video_url FROM t_posts INNER JOIN t_video 
  ON t_video.post_id=t_posts.id INNER JOIN t_admins ON t_admins.id=t_posts.insert_by  INNER JOIN t_category ON 
  t_category.id=t_posts.category_id WHERE t_posts.status!=0 AND t_posts.status=(SELECT `code` FROM `t_constant` 
- WHERE `table_name`='t_posts' AND `column_name`='status' AND `value`='video') ";
+ WHERE `table_name`='t_posts' AND `column_name`='status' AND `value`='video') order by  
+ ".$sortTarget." ".$sortStyle." limit ".$start." , ".$end;
 
         $res = $this->getDb()->prepare($sqlQuery);
 
@@ -104,13 +105,14 @@ class Post extends Model
 
 
 
-    public function getNews()
+    public function getNews($start ,$end , $sortTarget='', $sortStyle = '')
     {
         $sqlQuery="SELECT t_posts.title , t_posts.thumbnails_url , t_posts.insert_date ,t_admins.username insert_by 
  ,t_posts.category_id  , t_category.name , t_posts.insert_time , t_news.text FROM t_posts INNER JOIN t_news 
  ON t_news.post_id=t_posts.id INNER JOIN t_admins ON t_admins.id=t_posts.insert_by INNER JOIN t_category ON 
  t_category.id=t_posts.category_id WHERE t_posts.status!=0 AND t_posts.status=(SELECT `code` FROM `t_constant` 
- WHERE `table_name`='t_posts' AND `column_name`='status' AND `value`='news')";
+ WHERE `table_name`='t_posts' AND `column_name`='status' AND `value`='news') order by  
+ ".$sortTarget." ".$sortStyle." limit ".$start." , ".$end;
 
 
         $res = $this->getDb()->prepare($sqlQuery);
@@ -155,7 +157,7 @@ class Post extends Model
 
 
 
-    public function getVideoById($postId)
+    public function getVideoById($postId,$start ,$end , $sortTarget='', $sortStyle = '')
     {
 
         $sqlQuery="SELECT t_posts.title ,t_posts.update_by, t_posts.thumbnails_url , t_posts.insert_date ,t_admins.username as insert_by 
@@ -169,8 +171,9 @@ class Post extends Model
 
         $sqlQuery.=$str;
 
-        $sqlQuery.=") ";
-
+        $sqlQuery.=" )  order by  
+ ".$sortTarget." ".$sortStyle." limit ".$start." , ".$end;
+        
         $res = $this->getDb()->prepare($sqlQuery);
 
 
@@ -190,14 +193,15 @@ class Post extends Model
 
 
 
-    public function getVideoByCategory($catId)
+    public function getVideoByCategory($catId,$start ,$end , $sortTarget='', $sortStyle = '')
     {
 
         $sqlQuery="SELECT t_posts.title ,t_posts.update_by, t_posts.thumbnails_url , t_posts.insert_date ,t_admins.username as insert_by 
  ,t_posts.category_id  , t_category.name , t_posts.insert_time , t_video.time , t_video.video_url FROM t_posts INNER JOIN t_video 
  ON t_video.post_id=t_posts.id INNER JOIN t_admins ON t_admins.id=t_posts.insert_by  INNER JOIN t_category ON 
  t_category.id=t_posts.category_id WHERE  t_posts.status=(SELECT `code` FROM `t_constant` 
- WHERE `table_name`='t_posts' AND `column_name`='status' AND `value`='video') and  t_posts.cat_id=?";
+ WHERE `table_name`='t_posts' AND `column_name`='status' AND `value`='video') and  t_posts.cat_id=?  order by  
+ ".$sortTarget." ".$sortStyle." limit ".$start." , ".$end;
 
 
 
@@ -215,7 +219,7 @@ class Post extends Model
     }
 
 
-    public function getNewsById($postId)
+    public function getNewsById($postId,$start ,$end , $sortTarget='', $sortStyle = '')
     {
 
 
@@ -230,7 +234,8 @@ class Post extends Model
 
         $sqlQuery.=$str;
 
-        $sqlQuery.=") ";
+        $sqlQuery.=") order by  ".$sortTarget." ".$sortStyle." limit ".$start." , ".$end;
+
 
         $res = $this->getDb()->prepare($sqlQuery);
 
@@ -251,15 +256,15 @@ class Post extends Model
 
 
 
-    public function getNewsByCategory($catId)
+    public function getNewsByCategory($catId,$start ,$end , $sortTarget='', $sortStyle = '')
     {
 
         $sqlQuery="SELECT t_posts.title , t_posts.thumbnails_url , t_posts.insert_date ,t_admins.username insert_by 
  ,t_posts.category_id  , t_category.name , t_posts.insert_time , t_news.text FROM t_posts INNER JOIN t_news 
  ON t_news.post_id=t_posts.id INNER JOIN t_admins ON t_admins.id=t_posts.insert_by INNER JOIN t_category ON 
  t_category.id=t_posts.category_id WHERE  t_posts.status=(SELECT `code` FROM `t_constant` 
- WHERE `table_name`='t_posts' AND `column_name`='status' AND `value`='news') and  t_posts.cat_id =?";
-
+ WHERE `table_name`='t_posts' AND `column_name`='status' AND `value`='news') and  t_posts.cat_id =?  order by  
+ ".$sortTarget." ".$sortStyle." limit ".$start." , ".$end;
 
         $res = $this->getDb()->prepare($sqlQuery);
         $res->bindValue(1,$catId);
@@ -275,6 +280,7 @@ class Post extends Model
         return false;
 
     }
+
 
 
 
