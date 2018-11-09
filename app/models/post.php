@@ -173,7 +173,7 @@ class Post extends Model
 
         $sqlQuery.=" )  order by  
  ".$sortTarget." ".$sortStyle." limit ".$start." , ".$end;
-        
+
         $res = $this->getDb()->prepare($sqlQuery);
 
 
