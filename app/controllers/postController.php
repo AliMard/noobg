@@ -29,6 +29,21 @@ class PostController extends Controller
     public function getSliderPost()
     {
 
+        Validate::$STATUS='';
+
+
+        if (isset($_REQUEST['']) && isset($_REQUEST['']) ){
+
+
+
+
+
+        }else{
+            Validate::$INFORMATION='parameter not set';
+        }
+
+        echo json_encode(Validate::getResultArray());
+
     }
 
 
@@ -50,13 +65,16 @@ class PostController extends Controller
     public function getNewsByCategory()
     {
 
+
+
+
     }
 
 
 
 
 
-    //    get video posts
+    //     get video posts  section
 
 
 
@@ -73,6 +91,8 @@ class PostController extends Controller
     {
 
     }
+
+
 
 
 
