@@ -89,7 +89,6 @@ class Slider extends Model
                 return $res;
 
         }
-
         return false;
 
     }
