@@ -64,7 +64,7 @@ class PostController extends Controller
                         while ($row = $this->postInst->fetch(PDO::FETCH_ASSOC)){
                             array_push(Validate::$DATA['sliderPost'],['title'=>$row['title'],
                                 'thumbnailsUrl'=>$row['thumbnails_url'] , 'issueData'=>$row['insert_date'],
-                                'createBy'=>$row['insert_by'] , 'categoryName'=>$row['name'] , 'issueTime'=>$row['insert_time'] ,
+                                'createBy'=>$row['insert_by'] , 'categoryName`'=>$row['name'] , 'issueTime'=>$row['insert_time'] ,
                                 'newsText'=>$row['text']
                             ]);
                         }
